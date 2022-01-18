@@ -23,14 +23,15 @@ def verifyForNewReplies(twitter_api):  # Verificação de novas respostas.
     reply_list = twitter_api.mentions_timeline(
         since_id = (
             latest_reply_id
-        )
+        ),
+        tweet_mode = "extended"
     )
 
     for reply in reply_list:
-        if tweetContentFilter.banWordsFilter(reply.text):
+        if tweetContentFilter.banWordsFilter(reply.full_text, reply.id):
             print("<--Ignorado. (Palavra banida)-->")
             reply_list.remove(reply)
-        elif reply.text.endswith("$"):
+        elif reply.full_text.endswith("$"):
             print("<--Ignorado. (Sufixo  $)-->")
             reply_list.remove(reply)
 
@@ -38,5 +39,7 @@ def verifyForNewReplies(twitter_api):  # Verificação de novas respostas.
 
 
 def replyTweet(twitter_api_obj, content, in_reply_to_status_id):
+    content = tweetContentFilter.linkMentionFilter(content)
+
     twitter_api_obj.update_status(status=content, in_reply_to_status_id=in_reply_to_status_id, auto_populate_reply_metadata=True)
     print('Response:', content)
