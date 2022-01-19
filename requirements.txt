@@ -3,6 +3,7 @@ boto==2.49.0
 catalogue==2.0.6
 certifi==2021.10.8
 charset-normalizer==2.0.10
+chatterbot==1.0.0
 click==8.0.3
 colorama==0.4.4
 cycler==0.11.0
