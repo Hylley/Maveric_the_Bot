@@ -1,6 +1,7 @@
 import tweepy
 # from dotenv import load_dotenv
-import os
+# import os
+from decouple import config
 from boto.s3.connection import S3Connection
 
 import tweetContentFilter
@@ -8,10 +9,13 @@ import tweetContentFilter
 
 def twitterAuthenticate():
     # load_dotenv()
-
+    s3 = S3Connection(config('API_KEY'),
+                      config('API_KEY_SECRET'),
+                      config('ACCESS_TOKEN'),
+                      config('ACCESS_TOKEN_SECRET'))
     # Autenticação.
-    auth = tweepy.OAuthHandler(S3Connection(os.environ['API_KEY'], os.environ['API_KEY_SECRET']))
-    auth.set_access_token(S3Connection(os.environ['ACCESS_TOKEN'], os.environ['ACCESS_TOKEN_SECRET']))
+    auth = tweepy.OAuthHandler(os.getenv('API_KEY'), os.getenv('API_KEY_SECRET'))
+    auth.set_access_token(os.getenv('ACCESS_TOKEN'), os.getenv('ACCESS_TOKEN_SECRET'))
 
     # Criação do objeito de API do Twitter.
     twt = tweepy.API(auth)
