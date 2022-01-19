@@ -9,6 +9,7 @@ import tweetContentFilter
 
 twitter_api_obj = twitterAPI.twitterAuthenticate()
 chatBot = botAI.ChatBot('Maveric')
+botAI.trainCorpus(chatBot)
 
 bot_response_delay = 30
 
