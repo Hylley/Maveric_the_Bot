@@ -41,6 +41,6 @@ thinc==8.0.13
 tqdm==4.62.3
 tweepy==4.4.0
 typer==0.4.0
-typing_extensions==4.0.0
+typing_extensions==3.10.0.2
 urllib3==1.26.8
 wasabi==0.9.0
