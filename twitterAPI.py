@@ -1,6 +1,6 @@
 import tweepy
 # from dotenv import load_dotenv
-# import os
+import os
 from decouple import config
 from boto.s3.connection import S3Connection
 
