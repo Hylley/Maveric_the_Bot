@@ -35,9 +35,10 @@ def replyTweet(twt, reply_status, bot):  # Responde os tweets.
     twitterAPI.replyTweet(twt, content=bot_response, in_reply_to_status_id=reply_status.id)
 
 
-updateBot()
-schedule.every(bot_response_delay).seconds.do(updateBot)  # Cria um timer para refazer a procura de novas respostas e impede que o código termine.
+botAI.clearBot(chatBot)
+# updateBot()
+# schedule.every(bot_response_delay).seconds.do(updateBot)  # Cria um timer para refazer a procura de novas respostas e impede que o código termine.
 
-while True:
-    schedule.run_pending()
-    sleep(1)
+# while True:
+    # schedule.run_pending()
+    # sleep(1)
