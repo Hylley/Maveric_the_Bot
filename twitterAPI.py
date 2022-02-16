@@ -42,6 +42,9 @@ def verifyForNewReplies(twitter_api):  # Verificação de novas respostas.
 
     return reply_list
 
+def newTweet(twitter_api_obj, content):
+    twitter_api_obj.update_status(full_text=content, tweet_mode = "extended")
+
 
 def replyTweet(twitter_api_obj, content, in_reply_to_status_id):
     content = tweetContentFilter.linkMentionFilter(content)
